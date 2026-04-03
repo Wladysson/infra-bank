@@ -1,0 +1,15 @@
+resource "kubernetes_network_policy" "default_deny" {
+  metadata {
+    name      = "default-deny"
+    namespace = "default"
+  }
+
+  spec {
+    pod_selector {}
+
+    policy_types = [
+      "Ingress",
+      "Egress"
+    ]
+  }
+}
