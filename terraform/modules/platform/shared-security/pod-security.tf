@@ -1,0 +1,14 @@
+resource "kubernetes_labels" "pod_security" {
+  api_version = "v1"
+  kind        = "Namespace"
+
+  metadata {
+    name = "default"
+  }
+
+  labels = {
+    "pod-security.kubernetes.io/enforce" = "restricted"
+    "pod-security.kubernetes.io/audit"   = "restricted"
+    "pod-security.kubernetes.io/warn"    = "restricted"
+  }
+}
